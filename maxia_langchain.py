@@ -1,6 +1,7 @@
-"""MAXIA Tools for LangChain — AI-to-AI Marketplace on Solana
+"""MAXIA Tools for LangChain — AI-to-AI Marketplace on Solana + Base + Ethereum
 
-Plug these tools into any LangChain agent to interact with MAXIA.
+22 tools: marketplace, crypto (40 tokens), stocks (30), GPU (8 tiers), intelligence.
+Plug these tools into any LangChain or CrewAI agent to interact with MAXIA.
 
 Install:
     pip install langchain httpx
@@ -110,6 +111,28 @@ def get_maxia_tools(api_key: str = "") -> list:
             }),
             description="Get a crypto swap quote. Input: 'FROM_TOKEN, TO_TOKEN, AMOUNT' (e.g. 'SOL, USDC, 10').",
         ),
+        # ── GPU Rental ──
+        Tool(
+            name="maxia_gpu_tiers",
+            func=lambda _: _call_maxia("/gpu/tiers"),
+            description="List GPU tiers available for rent on MAXIA (RTX 4090, A100, H100, etc.) with pricing. Input: any string (ignored).",
+        ),
+        # ── Tokenized Stocks ──
+        Tool(
+            name="maxia_stocks_list",
+            func=lambda _: _call_maxia("/stocks"),
+            description="List all 30 tokenized stocks (AAPL, TSLA, NVDA...) with live prices. Input: any string (ignored).",
+        ),
+        Tool(
+            name="maxia_stocks_price",
+            func=lambda sym: _call_maxia(f"/stocks/price/{sym.strip()}"),
+            description="Get real-time price of a tokenized stock. Input: stock symbol (AAPL, TSLA, NVDA, GOOGL).",
+        ),
+        Tool(
+            name="maxia_stocks_fees",
+            func=lambda _: _call_maxia("/stocks/compare-fees"),
+            description="Compare MAXIA stock trading fees vs competitors (Robinhood, eToro, Binance). Input: any string (ignored).",
+        ),
     ]
 
     # Add tools that require API key
@@ -139,6 +162,39 @@ def get_maxia_tools(api_key: str = "") -> list:
                     "proposed_price": float(q.split(",")[1].strip()) if "," in q else 0,
                 }, api_key=api_key),
                 description="Negotiate price for a MAXIA service. Input: 'SERVICE_ID, PROPOSED_PRICE'. Requires API key.",
+            ),
+            # ── GPU with auth ──
+            Tool(
+                name="maxia_gpu_rent",
+                func=lambda q: _call_maxia("/gpu/rent", method="POST", body={
+                    "gpu_tier": q.split(",")[0].strip(),
+                    "hours": float(q.split(",")[1].strip()) if q.count(",") >= 1 else 1,
+                    "payment_tx": q.split(",")[2].strip() if q.count(",") >= 2 else "",
+                }, api_key=api_key),
+                description="Rent a GPU on MAXIA. Input: 'GPU_TIER, HOURS, PAYMENT_TX' (e.g. 'h100_sxm5, 2, TX_SIG'). Requires API key.",
+            ),
+            # ── Stocks with auth ──
+            Tool(
+                name="maxia_stocks_buy",
+                func=lambda q: _call_maxia("/stocks/buy", method="POST", body={
+                    "symbol": q.split(",")[0].strip(),
+                    "amount_usdc": float(q.split(",")[1].strip()) if q.count(",") >= 1 else 10,
+                    "payment_tx": q.split(",")[2].strip() if q.count(",") >= 2 else "",
+                }, api_key=api_key),
+                description="Buy tokenized stocks on MAXIA. Input: 'SYMBOL, AMOUNT_USDC, PAYMENT_TX' (e.g. 'AAPL, 50, TX_SIG'). Requires API key.",
+            ),
+            Tool(
+                name="maxia_stocks_sell",
+                func=lambda q: _call_maxia("/stocks/sell", method="POST", body={
+                    "symbol": q.split(",")[0].strip(),
+                    "shares": float(q.split(",")[1].strip()) if "," in q else 0,
+                }, api_key=api_key),
+                description="Sell tokenized stocks. Input: 'SYMBOL, SHARES' (e.g. 'AAPL, 0.5'). Requires API key.",
+            ),
+            Tool(
+                name="maxia_stocks_portfolio",
+                func=lambda _: _call_maxia("/stocks/portfolio", api_key=api_key),
+                description="View your tokenized stock portfolio on MAXIA. Input: any string (ignored). Requires API key.",
             ),
         ])
 

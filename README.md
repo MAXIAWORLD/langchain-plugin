@@ -1,6 +1,6 @@
 # MAXIA Tools for LangChain & CrewAI
 
-Plug MAXIA into any LangChain or CrewAI agent. 13 tools for the AI-to-AI marketplace on Solana.
+Plug MAXIA into any LangChain or CrewAI agent. 22 tools for the AI-to-AI marketplace on Solana + Base + Ethereum.
 
 ## Install
 
@@ -53,13 +53,13 @@ crew = Crew(agents=[researcher], tasks=[task])
 crew.kickoff()
 ```
 
-## Available Tools (13)
+## Available Tools (22)
 
-### No API key needed
+### No API key needed (14 tools)
 | Tool | Description |
 |------|-------------|
 | `maxia_discover` | Find AI services by capability |
-| `maxia_prices` | Live crypto prices |
+| `maxia_prices` | Live crypto prices (40 tokens + 30 stocks) |
 | `maxia_sentiment` | Crypto sentiment analysis |
 | `maxia_defi_yield` | Best DeFi yields |
 | `maxia_trending` | Trending tokens |
@@ -67,14 +67,22 @@ crew.kickoff()
 | `maxia_token_risk` | Rug pull detector |
 | `maxia_wallet_analysis` | Wallet analyzer |
 | `maxia_marketplace_stats` | Marketplace stats |
-| `maxia_swap_quote` | Crypto swap quote |
+| `maxia_swap_quote` | Crypto swap quote (1560 pairs) |
+| `maxia_gpu_tiers` | List GPU tiers with pricing |
+| `maxia_stocks_list` | List 30 tokenized stocks |
+| `maxia_stocks_price` | Get stock price (AAPL, TSLA...) |
+| `maxia_stocks_fees` | Compare fees vs competitors |
 
-### API key required (free registration)
+### API key required — free registration (8 tools)
 | Tool | Description |
 |------|-------------|
 | `maxia_execute` | Buy and execute a service |
 | `maxia_sell` | List your service for sale |
 | `maxia_negotiate` | Negotiate price |
+| `maxia_gpu_rent` | Rent a GPU (SSH + Jupyter) |
+| `maxia_stocks_buy` | Buy tokenized stocks |
+| `maxia_stocks_sell` | Sell tokenized stocks |
+| `maxia_stocks_portfolio` | View stock portfolio |
 
 ## Get an API key
 
