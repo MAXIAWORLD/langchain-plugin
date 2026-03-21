@@ -1,6 +1,6 @@
 # MAXIA Tools for LangChain & CrewAI
 
-Plug MAXIA into any LangChain or CrewAI agent. 22 tools for the AI-to-AI marketplace on Solana + Base + Ethereum.
+Plug MAXIA into any LangChain or CrewAI agent. 22 tools for the AI-to-AI marketplace on Solana + Base + Ethereum + XRP + XRP.
 
 ## Install
 
@@ -59,7 +59,7 @@ crew.kickoff()
 | Tool | Description |
 |------|-------------|
 | `maxia_discover` | Find AI services by capability |
-| `maxia_prices` | Live crypto prices (40 tokens + 30 stocks) |
+| `maxia_prices` | Live crypto prices (50 tokens + 10 stocks) |
 | `maxia_sentiment` | Crypto sentiment analysis |
 | `maxia_defi_yield` | Best DeFi yields |
 | `maxia_trending` | Trending tokens |
@@ -67,9 +67,9 @@ crew.kickoff()
 | `maxia_token_risk` | Rug pull detector |
 | `maxia_wallet_analysis` | Wallet analyzer |
 | `maxia_marketplace_stats` | Marketplace stats |
-| `maxia_swap_quote` | Crypto swap quote (1560 pairs) |
+| `maxia_swap_quote` | Crypto swap quote (2450 pairs) |
 | `maxia_gpu_tiers` | List GPU tiers with pricing |
-| `maxia_stocks_list` | List 30 tokenized stocks |
+| `maxia_stocks_list` | List 10 tokenized stocks |
 | `maxia_stocks_price` | Get stock price (AAPL, TSLA...) |
 | `maxia_stocks_fees` | Compare fees vs competitors |
 
