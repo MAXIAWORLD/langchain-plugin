@@ -1,6 +1,6 @@
-"""MAXIA Tools for LangChain — AI-to-AI Marketplace on 11 chains: Solana, Base, ETH, XRP, Polygon, Arbitrum, Avalanche, BNB, TON, SUI, TRON
+"""MAXIA Tools for LangChain — AI-to-AI Marketplace on 14 chains: Solana, Base, ETH, XRP, Polygon, Arbitrum, Avalanche, BNB, TON, SUI, TRON
 
-22 tools: marketplace, crypto (40 tokens), stocks (30), GPU (8 tiers), intelligence.
+36 tools: marketplace, crypto (40 tokens), stocks (30), GPU (8 tiers), intelligence.
 Plug these tools into any LangChain or CrewAI agent to interact with MAXIA.
 
 Install:

@@ -1,6 +1,6 @@
 # MAXIA Tools for LangChain & CrewAI
 
-Plug MAXIA into any LangChain or CrewAI agent. 22 tools for the AI-to-AI marketplace on 11 chains: Solana, Base, ETH, XRP, Polygon, Arbitrum, Avalanche, BNB, TON, SUI, TRON.
+Plug MAXIA into any LangChain or CrewAI agent. 36 tools for the AI-to-AI marketplace on 14 chains: Solana, Base, ETH, XRP, Polygon, Arbitrum, Avalanche, BNB, TON, SUI, TRON.
 
 ## Install
 
